@@ -26,14 +26,14 @@
 
       document.getElementById("yesButton").addEventListener("click", () => {
         db.collection("VLADA")
-          .doc("yes " + String(new Date()))
+          .doc("yes " + String(new Date()) + Math.random())
           .set({
             yes: "yes",
           });
       });
       document.getElementById("noButton").addEventListener("click", () => {
         db.collection("VLADA")
-          .doc("no " + String(new Date()))
+          .doc("no " + String(new Date()) + Math.random())
           .set({
             no: "no",
           });
