@@ -6,39 +6,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore-compat.js"></script>
   </head>
   <body>
-    <script type="module">
-      // TODO: Replace the following with your app's Firebase project configuration
-      // See: https://support.google.com/firebase/answer/7015592
-      const firebaseConfig = {
-        apiKey: "AIzaSyAo-Gs0QobdozTQBlTGec79TSlUNSladgI",
-        authDomain: "vlada-site.firebaseapp.com",
-        projectId: "vlada-site",
-        storageBucket: "vlada-site.appspot.com",
-        messagingSenderId: "990838696774",
-        appId: "1:990838696774:web:da880292bb79ace6ea1347",
-      };
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-
-      // Initialize Cloud Firestore and get a reference to the service
-      const db = firebase.firestore();
-
-      document.getElementById("yesButton").addEventListener("click", () => {
-        db.collection("VLADA")
-          .doc("yes " + String(new Date()) + Math.random())
-          .set({
-            yes: "yes",
-          });
-      });
-      document.getElementById("noButton").addEventListener("click", () => {
-        db.collection("VLADA")
-          .doc("no " + String(new Date()) + Math.random())
-          .set({
-            no: "no",
-          });
-      });
-    </script>
     <div class="container">
       <div>
         <h1 class="header_text">
@@ -49,7 +16,7 @@
         <img src="https://i.postimg.cc/CKfWDG6j/first.gif" />
       </div>
       <div class="buttons">
-        <button class="btn" id="yesButton" onclick=" nextPage()">Да</button>
+        <button class="btn" id="yesButton">Да</button>
         <button
           class="btn"
           id="noButton"
@@ -62,7 +29,40 @@
           function nextPage() {
             window.location.href = "yes.html";
           }
+          // TODO: Replace the following with your app's Firebase project configuration
+          // See: https://support.google.com/firebase/answer/7015592
+          const firebaseConfig = {
+            apiKey: "AIzaSyAo-Gs0QobdozTQBlTGec79TSlUNSladgI",
+            authDomain: "vlada-site.firebaseapp.com",
+            projectId: "vlada-site",
+            storageBucket: "vlada-site.appspot.com",
+            messagingSenderId: "990838696774",
+            appId: "1:990838696774:web:da880292bb79ace6ea1347",
+          };
 
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+
+          // Initialize Cloud Firestore and get a reference to the service
+          const db = firebase.firestore();
+
+          document.getElementById("yesButton").addEventListener("click", () => {
+            db.collection("VLADA")
+              .doc("yes " + String(new Date()) + Math.random())
+              .set({
+                yes: "yes",
+              });
+            nextPage();
+          });
+          document.getElementById("noButton").addEventListener("click", () => {
+            db.collection("VLADA")
+              .doc("no " + String(new Date()) + Math.random())
+              .set({
+                no: "no",
+              });
+          });
+        </script>
+        <script>
           function moveButton() {
             var x =
               Math.random() *
