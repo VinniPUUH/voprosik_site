@@ -31,6 +31,7 @@
           }
           // TODO: Replace the following with your app's Firebase project configuration
           // See: https://support.google.com/firebase/answer/7015592
+
           const firebaseConfig = {
             apiKey: "AIzaSyAo-Gs0QobdozTQBlTGec79TSlUNSladgI",
             authDomain: "vlada-site.firebaseapp.com",
@@ -45,22 +46,29 @@
 
           // Initialize Cloud Firestore and get a reference to the service
           const db = firebase.firestore();
+          console.log("db", db.collection("VLADA"));
 
-          document.getElementById("yesButton").addEventListener("click", () => {
-            db.collection("VLADA")
-              .doc("yes " + String(new Date()) + Math.random())
-              .set({
-                yes: "yes",
-              });
-            nextPage();
-          });
-          document.getElementById("noButton").addEventListener("click", () => {
-            db.collection("VLADA")
-              .doc("no " + String(new Date()) + Math.random())
-              .set({
-                no: "no",
-              });
-          });
+          document
+            .getElementById("yesButton")
+            .addEventListener("click", async () => {
+              await db
+                .collection("VLADA")
+                .doc("yes " + String(new Date()) + Math.random())
+                .set({
+                  yes: "yes",
+                });
+              nextPage();
+            });
+          document
+            .getElementById("noButton")
+            .addEventListener("click", async () => {
+              await db
+                .collection("VLADA")
+                .doc("no " + String(new Date()) + Math.random())
+                .set({
+                  no: "no",
+                });
+            });
         </script>
         <script>
           function moveButton() {
